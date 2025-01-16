@@ -7,7 +7,7 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
+            background-color: #f4f4f9;
             margin: 0;
             padding: 0;
             display: flex;
@@ -16,100 +16,139 @@
             height: 100vh;
         }
         .form-container {
-            background-color: #fff;
+            width: 100%;
+            max-width: 400px;
             padding: 20px;
+            background: #fff;
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            width: 300px;
         }
-        .form-container h2 {
+        h2 {
             text-align: center;
             margin-bottom: 20px;
         }
-        .input-field {
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .form-group input {
             width: 100%;
             padding: 10px;
-            margin: 10px 0;
             border: 1px solid #ccc;
             border-radius: 4px;
         }
-        .btn {
+        .form-group button {
             width: 100%;
             padding: 10px;
-            background-color: #4CAF50;
+            background-color: #007bff;
             color: white;
             border: none;
             border-radius: 4px;
             cursor: pointer;
+            font-size: 16px;
         }
-        .btn:hover {
-            background-color: #45a049;
+        .form-group button:hover {
+            background-color: #0056b3;
         }
         .link {
-            display: block;
             text-align: center;
             margin-top: 10px;
+        }
+        .link a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        .link a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
 <body>
-
-    <!-- Login Form -->
-    <div class="form-container" id="login-form">
-        <h2>Login</h2>
-        <form>
-            <input type="email" class="input-field" placeholder="Email" required><br>
-            <input type="password" class="input-field" placeholder="Password" required><br>
-            <button type="submit" class="btn">Login</button>
+    <div class="form-container">
+        <form id="login-form">
+            <h2>Login</h2>
+            <div class="form-group">
+                <label for="login-email">Email</label>
+                <input type="email" id="login-email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="login-password">Password</label>
+                <input type="password" id="login-password" name="password" required>
+            </div>
+            <div class="form-group">
+                <button type="submit">Login</button>
+            </div>
+            <div class="link">
+                <a href="#" onclick="showForm('signup-form')">Sign Up</a> | 
+                <a href="#" onclick="showForm('forgot-password-form')">Forgot Password?</a>
+            </div>
         </form>
-        <a href="javascript:void(0);" class="link" onclick="showForm('forget-password')">Forgot Password?</a>
-        <a href="javascript:void(0);" class="link" onclick="showForm('signup')">Don't have an account? Sign up</a>
-    </div>
 
-    <!-- Signup Form -->
-    <div class="form-container" id="signup-form" style="display:none;">
-        <h2>Signup</h2>
-        <form>
-            <input type="text" class="input-field" placeholder="Full Name" required><br>
-            <input type="email" class="input-field" placeholder="Email" required><br>
-            <input type="password" class="input-field" placeholder="Password" required><br>
-            <input type="password" class="input-field" placeholder="Confirm Password" required><br>
-            <button type="submit" class="btn">Sign Up</button>
+        <form id="signup-form" style="display: none;">
+            <h2>Sign Up</h2>
+            <div class="form-group">
+                <label for="signup-name">Name</label>
+                <input type="text" id="signup-name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="signup-email">Email</label>
+                <input type="email" id="signup-email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="signup-password">Password</label>
+                <input type="password" id="signup-password" name="password" required>
+            </div>
+            <div class="form-group">
+                <button type="submit">Sign Up</button>
+            </div>
+            <div class="link">
+                <a href="#" onclick="showForm('login-form')">Back to Login</a>
+            </div>
         </form>
-        <a href="javascript:void(0);" class="link" onclick="showForm('login')">Already have an account? Login</a>
-    </div>
 
-    <!-- Forget Password Form -->
-    <div class="form-container" id="forget-password" style="display:none;">
-        <h2>Forgot Password</h2>
-        <form>
-            <input type="email" class="input-field" placeholder="Enter your email" required><br>
-            <button type="submit" class="btn">Submit</button>
+        <form id="forgot-password-form" style="display: none;">
+            <h2>Forgot Password</h2>
+            <div class="form-group">
+                <label for="forgot-email">Email</label>
+                <input type="email" id="forgot-email" name="email" required>
+            </div>
+            <div class="form-group">
+                <button type="submit">Reset Password</button>
+            </div>
+            <div class="link">
+                <a href="#" onclick="showForm('login-form')">Back to Login</a>
+            </div>
         </form>
-        <a href="javascript:void(0);" class="link" onclick="showForm('login')">Back to Login</a>
-    </div>
 
-    <!-- Change Password Form -->
-    <div class="form-container" id="change-password" style="display:none;">
-        <h2>Change Password</h2>
-        <form>
-            <input type="password" class="input-field" placeholder="New Password" required><br>
-            <input type="password" class="input-field" placeholder="Confirm New Password" required><br>
-            <button type="submit" class="btn">Change Password</button>
+        <form id="change-password-form" style="display: none;">
+            <h2>Change Password</h2>
+            <div class="form-group">
+                <label for="current-password">Current Password</label>
+                <input type="password" id="current-password" name="current-password" required>
+            </div>
+            <div class="form-group">
+                <label for="new-password">New Password</label>
+                <input type="password" id="new-password" name="new-password" required>
+            </div>
+            <div class="form-group">
+                <button type="submit">Change Password</button>
+            </div>
+            <div class="link">
+                <a href="#" onclick="showForm('login-form')">Back to Login</a>
+            </div>
         </form>
-        <a href="javascript:void(0);" class="link" onclick="showForm('login')">Back to Login</a>
     </div>
 
     <script>
         function showForm(formId) {
-            // Hide all forms
-            const forms = document.querySelectorAll('.form-container');
+            const forms = document.querySelectorAll('form');
             forms.forEach(form => form.style.display = 'none');
-
-            // Show the selected form
             document.getElementById(formId).style.display = 'block';
         }
     </script>
-
 </body>
 </html>
